@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Blargle"/>
+	<classpathentry kind="src" path="Car"/>
+	<classpathentry kind="src" path="Exceptions"/>
+	<classpathentry kind="src" path="MergeSort"/>
+	<classpathentry kind="src" path="Troll"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
