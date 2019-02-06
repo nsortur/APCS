@@ -10,7 +10,7 @@ public class CustomClass{
     public int x = 5;
     public void someMethod() throws CustomException{
         if(x < 10){
-            //Calling the customexception constructor with the string paramater
+            //Calling the customexception constructor with the string parameter
             throw new CustomException("X < 10");
         } else{
             System.out.println("Good");
