@@ -1,5 +1,5 @@
 
-public class MatrixException extends Exception{
+class MatrixException extends Exception{
 	public MatrixException() {
 		super();
 	}
