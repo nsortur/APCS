@@ -5,13 +5,13 @@
  * @author Neel Sortur
  */
 public class Matrix {
-
+	
+	//Variable declaration
 	public int rowVar;
 	public int colVar;
 	private double[][] mat;
 	boolean plzwork = true;
 
-	// [rows][columns]
 	/*
 	 * Constructs a matrix object
 	 * 
@@ -92,7 +92,7 @@ public class Matrix {
 	 * @return the difference matrix
 	 */
 	public Matrix sub(Matrix a, Matrix b) throws MatrixException {
-		if (a == null || b == null || a != b) {
+		if (a == null || b == null || a.colVar != b.rowVar) {
 			throw new MatrixException("Null matrix");
 		} else if (a.rowVar != b.rowVar || a.colVar != b.colVar) {
 			throw new MatrixException("Matrices are not equal size");
@@ -118,7 +118,7 @@ public class Matrix {
 	 * @return the product matrix
 	 */
 	public Matrix mult(Matrix a, Matrix b) throws MatrixException {
-		if (a == null || b == null || a != b) {
+		if (a == null || b == null || a.colVar != b.rowVar) {
 			throw new MatrixException("Null matrix");
 		} else if (a.rowVar != b.rowVar || a.colVar != b.colVar) {
 			throw new MatrixException("Matrices are not equal size");
