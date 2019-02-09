@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="Exceptions"/>
 	<classpathentry kind="src" path="MergeSort"/>
 	<classpathentry kind="src" path="Troll"/>
+	<classpathentry kind="src" path="Matrix"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
