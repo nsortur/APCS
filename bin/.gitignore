@@ -1,13 +1,3 @@
-/Blarg.class
-/Blargle.class
-/Car.class
-/CarTest.class
-/CustomClass.class
-/CustomException.class
-/ExceptionTest.class
-/Matrix.class
-/MatrixException.class
-/MergeSort.class
-/Troll.class
-/TrollTest.class
-/Truck.class
+/Node.class
+/ListThing.class
+/LinkedListAdd.class
