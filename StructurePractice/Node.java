@@ -1,4 +1,6 @@
-
+/*
+ * Standard node class
+ */
 public class Node {
 	
 	int value;

@@ -2,16 +2,20 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+
 /*
- * Adds two files num1 and num2 containing integers using linked lists
+ * Class for implementing linked lists
+ * Adds two files of integers using linked lists
+ * 
  * @author Neel Sortur
  */
 public class LinkedListAdd {
 
-	public static Node head;
+	public Node head;
 
-	public static Node curr;
-	
+	public Node curr;
+	public Node prev;
+
 	public static LinkedListAdd listOne;
 	public static LinkedListAdd listTwo;
 
@@ -27,70 +31,101 @@ public class LinkedListAdd {
 
 		listOne = new LinkedListAdd(numOne.nextInt());
 		addToList(listOne, numOne);
-		
-//		listTwo = new LinkedListAdd(numTwo.nextInt());
-//		addToList(listTwo, numTwo);
-		
+
+		listTwo = new LinkedListAdd(numTwo.nextInt());
+		addToList(listTwo, numTwo);
+
+		System.out.print("First list: ");
 		printList(listOne);
-		
-		//LinkedListAdd prnt = addLists(listOne, listTwo);
-		
-		//printList(prnt);
-		
+
+		System.out.print("Second list: ");
+		printList(listTwo);
+
+		LinkedListAdd prnt = addLists(listOne, listTwo);
+
+		System.out.print("Result: ");
+		printList(prnt);
+
 	}
-	public LinkedListAdd() {head = new Node();}
-	
+
+	public LinkedListAdd() {
+		head = new Node();
+	}
+
 	public LinkedListAdd(int value) {
 		head = new Node(value);
-		curr = head;
 	}
 
 	public void insert(int a) {
+
 		curr.setNext(new Node(a));
 		curr = curr.getNext();
+		curr.setPrev(prev);
+		prev = curr;
+	}
+
+	public void insertPrevious(int a) {
+		curr.setValue(a);
+		curr.setNext(head);
+		curr.setPrev(null);
+		if (head != null) {
+			head.setPrev(curr);
+		}
+		head = curr;
 	}
 
 	public static void addToList(LinkedListAdd list, Scanner scan) {
+		list.curr = list.head;
 		while (scan.hasNext()) {
 			list.insert(scan.nextInt());
 		}
+		
 	}
-	
+
 	public static void printList(LinkedListAdd list) {
 		list.curr = list.head;
 
 		while (list.curr != null) {
-			System.out.println(list.curr.getValue());
+			System.out.print(list.curr.getValue());
 			list.curr = list.curr.getNext();
 		}
+		System.out.println("");
+		list.curr = list.head;
 	}
-	
+
 	public static LinkedListAdd addLists(LinkedListAdd first, LinkedListAdd second) {
 		int carry = 0;
 		int val;
 		LinkedListAdd result = new LinkedListAdd();
 		
-		//sets pointers to last node in linked list
-		while(first.curr.getNext() != null) {
+		// sets pointers to last node in linked list
+		while (first.curr.getNext() != null) {
 			first.curr = first.curr.getNext();
 		}
-		while(second.curr.getNext() != null) {
+		while (second.curr.getNext() != null) {
 			second.curr = second.curr.getNext();
 		}
-		System.out.println(first.curr.getValue());
+		//set curr pointer to head in result
+		result.curr = result.head;
+
+		while (first.curr != null && second.curr != null) {
+			val = first.curr.getValue() + second.curr.getValue() + carry;
+			// gets carried value
+			if (val > 9) {
+				carry = 1;
+				val -= 10;
+			}
+			if (first.curr.getNext() == null) {
+				result.curr.setValue(val);
+			} else {
+				result.insert(val);
+				carry = 0;
+			}
+			
+			first.curr = first.curr.getPrev();
+			second.curr = second.curr.getPrev();
+		}
 		
-//		while(first.curr != null && second.curr != null) {
-//			val = first.curr.getValue() + second.curr.getValue() + carry;
-//			//gets carried value
-////			if(val > 9) {
-////				carry = val % 10;
-////				val -= 10;
-////			}
-////			result.curr.setValue(val);
-////			
-////			first.curr = first.curr.getPrev();
-////			second.curr = second.curr.getPrev();
-//		}
 		return result;
 	}
 }
